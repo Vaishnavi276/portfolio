@@ -5,12 +5,7 @@
   --foreground: #171717;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -23,4 +18,227 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.glass-card{
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.18);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.37);
+}
+.glass-card:hover{
+  transform: scale(1.03);
+  transition: 0.4s;
+  border: 1px solid rgba(0,255,255,0.5);
+}
+
+.animated-bg {
+  background: linear-gradient(
+    -45deg,
+    #000000,
+    #0f172a,
+    #020617,
+    #1e293b
+  );
+  background-size: 400% 400%;
+  animation: gradientMove 15s ease infinite;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@keyframes scrollSkills {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  display: flex;
+  animation: scrollSkills 15s linear infinite;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+.project-card::before {
+  content: "";
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: 300px;
+  height: 300px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    circle,
+    rgba(59,130,246,0.4),
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.project-card:hover::before {
+  opacity: 1;
+}
+
+.orbit-icon {
+  animation: orbit 12s linear infinite;
+}
+
+@keyframes orbit {
+  from {
+    transform: rotate(0deg) translate(140px) rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg) translate(140px) rotate(-360deg);
+  }
+}
+
+.glow-avatar {
+  position: relative;
+}
+
+.glow-avatar::before {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(59,130,246,0.8), transparent 70%);
+  filter: blur(15px);
+  animation: glowPulse 3s infinite ease-in-out;
+  z-index: -1;
+}
+
+@keyframes glowPulse {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.95);
+    opacity: 0.7;
+  }
+}
+
+.animated-mesh {
+  position: fixed;
+  inset: 0;
+  z-index: -10;
+  background: radial-gradient(at 20% 30%, rgba(59,130,246,0.35) 0px, transparent 50%),
+              radial-gradient(at 80% 20%, rgba(168,85,247,0.35) 0px, transparent 50%),
+              radial-gradient(at 40% 80%, rgba(34,211,238,0.35) 0px, transparent 50%),
+              radial-gradient(at 90% 70%, rgba(99,102,241,0.35) 0px, transparent 50%),
+              #020617;
+  animation: meshMove 15s ease infinite alternate;
+}
+
+@keyframes meshMove {
+  0% {
+    background-position:
+      20% 30%,
+      80% 20%,
+      40% 80%,
+      90% 70%;
+  }
+  100% {
+    background-position:
+      30% 40%,
+      70% 30%,
+      50% 70%,
+      80% 60%;
+  }
+}
+
+/* ===== Animated Gradient Background ===== */
+
+.animated-gradient {
+  background: linear-gradient(
+    -45deg,
+    #020617,
+    #0f172a,
+    #1e3a8a,
+    #312e81,
+    #020617
+  );
+  background-size: 400% 400%;
+  animation: gradientMove 14s ease infinite;
+}
+
+/* ===== Global Animated Background ===== */
+
+.portfolio-bg {
+  background: linear-gradient(
+    -45deg,
+    #020617,
+    #0f172a,
+    #1e3a8a,
+    #312e81,
+    #020617
+  );
+  background-size: 400% 400%;
+  animation: gradientMove 18s ease infinite;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  display: flex;
+  width: max-content;
+  animation: scroll 20s linear infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.stroke-text{
+  -webkit-text-stroke:1px white;
+  color:transparent;
+}
+
+@keyframes floatGlow {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(40px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-pulse{
+  animation: floatGlow 8s ease-in-out infinite;
 }
