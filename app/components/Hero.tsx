@@ -124,11 +124,24 @@ export default function Hero() {
           >
 
             <MagneticButton>
-              View Projects
+            
+              <a href="#projects">
+  <button className="px-6 py-3 bg-blue-500 rounded-lg hover:bg-blue-600 transition">
+    View Projects
+  </button>
+</a>
             </MagneticButton>
 
             <MagneticButton>
-              Resume Download
+              <a
+  href="/Resume (2).pdf"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <button className="px-6 py-3 bg-blue-500 rounded-lg hover:bg-blue-600 transition">
+    Resume Download
+  </button>
+</a>
             </MagneticButton>
 
           </motion.div>

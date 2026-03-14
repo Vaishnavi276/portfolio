@@ -11,14 +11,16 @@ const projects = [
     description:
       "A responsive NGO platform enabling secure online donations and seamless supporter engagement.",
     tech: ["HTML", "CSS", "JavaScript", "Razorpay", "GitHub"],
-    image: "/Projects/NGO-Website.png"
+    image: "/Projects/NGO-Website.png",
+    github: "https://github.com/Vaishnavi276/ngo-website"
   },
   {
     title: "MediRoots",
     description:
       "AI-powered healthcare assistant that reads handwritten prescriptions.",
     tech: ["Kotlin", "Jetpack Compose", "ML Kit", "Gemini API"],
-    image: "/Projects/Mediroot.png"
+    image: "/Projects/MediRoot.png",
+    github: "https://github.com/Vaishnavi276/MediRoot"
   },
   {
     title: "Blood Donor System",
@@ -39,6 +41,7 @@ const techIcons: any = {
   MongoDB: <SiMongodb className="text-green-500" />,
   Firebase: <SiFirebase className="text-orange-400" />
 };
+
 
 export default function Projects() {
   return (
@@ -84,15 +87,14 @@ export default function Projects() {
 </div>
 
 {/* Content */}
+{/* Content */}
 <div className="p-6">
-  <h3 className="text-xl font-bold mb-2">
-    {project.title}
-  </h3>
 
-  <p className="text-gray-300 mb-4">
-    {project.description}
-  </p>
+  <h3 className="text-xl font-bold mb-2">{project.title}</h3>
 
+  <p className="text-gray-300 mb-4">{project.description}</p>
+
+  {/* Tech stack */}
   <div className="flex flex-wrap gap-2 mt-3">
     {project.tech.map((tech, i) => (
       <span
@@ -103,6 +105,23 @@ export default function Projects() {
       </span>
     ))}
   </div>
+
+  {/* Project Links */}
+  <div className="flex gap-3 mt-4">
+
+  
+
+    <a
+      href={project.github}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="px-3 py-2 text-sm border border-white/20 rounded-lg hover:bg-white/10 transition"
+    >
+      GitHub
+    </a>
+
+  </div>
+
 </div>
 
 </motion.div>
