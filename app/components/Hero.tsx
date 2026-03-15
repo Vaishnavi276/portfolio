@@ -134,7 +134,7 @@ export default function Hero() {
 
             <MagneticButton>
               <a
-  href="/Resume (2).pdf"
+  href="/Vaishnavi's Resume.pdf"
   target="_blank"
   rel="noopener noreferrer"
 >
