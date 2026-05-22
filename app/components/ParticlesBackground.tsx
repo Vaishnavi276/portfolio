@@ -1,55 +1,61 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Particles from "@tsparticles/react";
+import { loadSlim } from "tsparticles-slim";
+import type { Engine } from "tsparticles-engine";
 
 export default function ParticlesBackground() {
+  const [init, setInit] = useState(false);
+
+  useEffect(() => {
+    const initParticles = async () => {
+      const engine: Engine = {} as Engine;
+      await loadSlim(engine);
+      setInit(true);
+    };
+
+    initParticles();
+  }, []);
+
+  if (!init) return null;
+
   return (
     <Particles
       id="tsparticles"
+      className="fixed inset-0 -z-10"
       options={{
         background: {
-          color: { value: "transparent" }
+          color: {
+            value: "transparent",
+          },
         },
         fpsLimit: 60,
         particles: {
-          number: { value: 80 },
-          color: { value: "#3b82f6" },
+          number: {
+            value: 80,
+          },
+          color: {
+            value: "#3b82f6",
+          },
           links: {
             enable: true,
             color: "#3b82f6",
             distance: 150,
-            opacity: 0.4,
-            width: 1
+            opacity: 0.3,
+            width: 1,
           },
           move: {
             enable: true,
-            speed: 1
+            speed: 1,
           },
-          opacity: { value: 0.5 },
-          size: { value: { min: 1, max: 4 } }
+          size: {
+            value: { min: 1, max: 3 },
+          },
+          opacity: {
+            value: 0.5,
+          },
         },
-        interactivity: {
-          events: {
-            onHover: {
-              enable: true,
-              mode: "repulse"
-            }
-          },
-          modes: {
-            repulse: {
-              distance: 100
-            }
-          }
-        }
-      }}
-      style={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        width: "100%",
-        height: "100%",
-        zIndex: -1,
-        pointerEvents: "none"
       }}
     />
   );
